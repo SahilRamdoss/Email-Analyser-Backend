@@ -123,3 +123,35 @@ In practice your model, never sees "the email". It sees:
 > Normalized text -> selectively truncated -> implicitly or explicitly weighted
 
 That representation determines performance more than model choice in many email NLP tasks.
+
+# The Text Normalization Process
+
+## The Prelude
+
+Before doing text normalization for the emails, we must first do *email parsing* and HTML -> Plain text conversion (FORMAT normalization).
+
+During **email parsing**, we seperate the:
+
+- Headers
+- Subject
+- Plain-text body
+- HTML body
+- Attachments
+
+Examples of tasks include:
+
+- Decode base64 bodies
+- Handle multipart emails
+- Choose plain texts vs HTML
+- Extract subject line correctly
+
+This step produces structured fields such as the subject, body text and body html. It is an example of **data extraction**. Here is an example of email data after email parsing:
+
+>   {
+>      "id": "19af9be7bd1997b1",
+>      "subject": "Test email 2 (Chill)",
+>      "sender": "Udhay Ramdoss \u003Cudhay1royalist@gmail.com\u003E",
+>      "receiver": "\"udhayramdoss@gmail.com\" \u003Cudhayramdoss@gmail.com\u003E",
+>      "date": "Sun, 7 Dec 2025 20:56:29 +0400",
+>      "body": "Hi Udhay\r\n\r\nThis is a very chill issue :)\r\n\r\nKind regards,\r\nUdhay Ramdoss\r\n"
+>    }
