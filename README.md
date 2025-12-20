@@ -1,3 +1,5 @@
+# Introduction
+
 The system is not *general intellience*, *reasoning* or *autonomous decision-making*.
 
 It is *statistical pattern recognition over text*, guided by *human feedback*.
@@ -90,17 +92,17 @@ Subjects are important as they are:
 
 The different ways to weigh them are:
 
-   - Explicit duplication 
+   1) Explicit duplication 
       * Append subject twice or more before the body
 
-   - Feature weighting (classical ML)
+   2) Feature weighting (classical ML)
       * TF-IDF with higher weights for subject tokens
 
-   - Seperate Encoders
+   3) Seperate Encoders
       * Encode subject and body independently
       * Combine the embeddings (sum, concat, attention)
 
-   - Special Tokens
+   4) Special Tokens
       * [SUBJECT] ... [BODY] ... to let the model learn importance
 
 When subject matters more
